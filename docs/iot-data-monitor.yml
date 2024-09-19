@@ -1,0 +1,82 @@
+asyncapi: '2.0.0'
+info:
+  title: IoT 传感器数据 WebSocket API
+  version: '1.0.0'
+  description: |
+    此 API 模拟一个物联网系统，通过 WebSocket 连接发送实时的传感器数据（如温度和湿度）。
+
+servers:
+  local:
+    url: ws://localhost:8080
+    protocol: wss
+    description: 用于模拟传感器数据的本地开发 WebSocket 服务器。
+
+channels:
+  sensors/data:
+    description: 发布和订阅实时传感器数据（温度和湿度）的通道。
+    subscribe:
+      summary: 订阅来自物联网设备的实时传感器数据。
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+              # 当前demo中使用的自定义时间戳格式
+              description: 记录数据时的时间戳，使用 ISO 8601 格式。
+            temperature:
+              type: number
+              description: 温度，单位为摄氏度。
+              example: 22.5
+            humidity:
+              type: number
+              description: 湿度百分比。
+              example: 60.5
+          required:
+            - timestamp
+            - temperature
+            - humidity
+    publish:
+      summary: 向 WebSocket 服务器发送实时传感器数据。
+      message:
+        contentType: application/json
+        payload:
+          type: object
+          properties:
+            timestamp:
+              type: string
+              format: date-time
+              description: 数据的时间戳，使用 ISO 8601 格式。
+            temperature:
+              type: number
+              description: 温度，单位为摄氏度。
+            humidity:
+              type: number
+              description: 湿度百分比。
+          required:
+            - timestamp
+            - temperature
+            - humidity
+
+components:
+  messages:
+    SensorData:
+      summary: 物联网传感器数据消息。
+      payload:
+        type: object
+        properties:
+          timestamp:
+            type: string
+            format: date-time
+          temperature:
+            type: number
+            description: 温度，单位为摄氏度。
+          humidity:
+            type: number
+            description: 湿度百分比。
+        required:
+          - timestamp
+          - temperature
+          - humidity

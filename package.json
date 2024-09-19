@@ -1,0 +1,14 @@
+{
+  "name": "iot-data-monitor",
+  "version": "1.0.0",
+  "description": "IOT data monitor",
+  "main": "start.js",
+  "scripts": {
+    "start": "node start.js",
+    "stop": "node stop.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

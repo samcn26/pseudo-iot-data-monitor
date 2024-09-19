@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "mqtt",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,8 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.3.0",
-    "mqtt": "^4.3.7",
-    "ws": "^8.13.0"
+    "aedes": "^0.51.3",
+    "aedes-logging": "^2.0.1",
+    "aedes-persistence": "^9.1.2",
+    "aedes-persistence-level": "^8.0.1"
   }
 }

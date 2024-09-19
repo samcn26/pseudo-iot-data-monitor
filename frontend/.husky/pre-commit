@@ -1,0 +1,13 @@
+#!/bin/sh
+npx lint-staged
+
+# 获取当前分支名称
+current_branch=$(git symbolic-ref --short HEAD)
+
+# 检查是否为 main 分支
+if [ "$current_branch" = "main" ]; then
+  echo "当前在 $current_branch 分支，运行测试..."
+  pnpm run test
+else
+  echo "当前在 $current_branch 分支，跳过测试。"
+fi
